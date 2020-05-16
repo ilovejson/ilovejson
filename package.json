@@ -1,0 +1,29 @@
+{
+    "name": "ilovejson",
+    "version": "0.0.1",
+    "description": "Every tool you need to work with JSONs in one place",
+    "main": "index.js",
+    "dependencies": {
+        "next": "^9.4.0",
+        "next-pwa": "^2.4.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ilovejson/app.git"
+    },
+    "author": "Darshan Gada",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ilovejson/app/issues"
+    },
+    "homepage": "https://github.com/ilovejson/app#readme"
+}
