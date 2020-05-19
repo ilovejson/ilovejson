@@ -18,9 +18,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .idea
-/static/.analyze/*
+/public/.analyze/*
 /server-prod.js
 .scripts/build*.sh
 !.scripts/build-docker.sh
 *server.build.js
 !.gitkeep
+/public/sw*
