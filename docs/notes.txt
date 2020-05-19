@@ -6,13 +6,24 @@ JSON-TABLE-JSON
 JSON-PLIST-JSON
 JSON-ARRAY-JSON
 JSON-YAML-JSON
-JSON-SQL-JSON (MySQL, Postgres, )
+JSON-SQL-JSON (MySQL, Postgres, SQL Server)
 
 Utility
 ---
 Compress
 Beautify --
 Viewer
+Editor
 Merge
 Validate
 Repair
+
+Features
+---
+PWA --> Mobile App
+Desktop --> Electron
+SEO
+Google Analytics
+Docker
+APIs
+CliTool
