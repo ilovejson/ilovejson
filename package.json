@@ -18,12 +18,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ilovejson/app.git"
+        "url": "git+https://github.com/ilovejson/ilovejson.git"
     },
     "author": "Darshan Gada",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
-        "url": "https://github.com/ilovejson/app/issues"
+        "url": "https://github.com/ilovejson/ilovejson/issues"
     },
-    "homepage": "https://github.com/ilovejson/app#readme"
+    "homepage": "https://github.com/ilovejson/ilovejson#readme"
 }
