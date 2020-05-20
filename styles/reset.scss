@@ -1,0 +1,8 @@
+a, a:link, a:visited, a:focus, a:hover, a:active {
+  text-decoration: unset;
+  color: unset;
+}
+
+a:not([class]) {
+  color: unset;
+}
