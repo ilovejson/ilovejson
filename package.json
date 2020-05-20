@@ -4,17 +4,25 @@
     "description": "Every tool you need to work with JSONs in one place",
     "main": "index.js",
     "dependencies": {
+        "@zeit/next-sass": "^1.0.1",
         "next": "^9.4.0",
         "next-pwa": "^2.4.1",
+        "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "eslint": "^7.0.0",
+        "eslint-plugin-react": "^7.20.0"
+    },
     "scripts": {
         "dev": "next",
         "build": "next build",
         "start": "next start",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "export": "next build && next export",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --ext .js,.jsx --ignore-path .eslintignore .",
+        "lint:fix": "eslint --fix --ext .js,.jsx --ignore-path .eslintignore ."
     },
     "repository": {
         "type": "git",
