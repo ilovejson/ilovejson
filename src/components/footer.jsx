@@ -1,6 +1,6 @@
 const Footer = () => (
   <footer>
-    Made with ❤️in India🇮🇳
+    Made with ❤️ in India🇮🇳
   </footer>
 )
 

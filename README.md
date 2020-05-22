@@ -21,6 +21,9 @@ npm run dev
 yarn dev
 ```
 
+## API Sample
+http://localhost:3000/api/ilovejson
+
 ## Powered by Next.js
 
 To learn more about Next.js, take a look at the following resources:
