@@ -10,18 +10,17 @@
 /build
 /dist
 /.next
+/out
 
 # misc
 .DS_Store
-.env
+.env*
+!.gitkeep
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.idea
-/public/.analyze/*
-/server-prod.js
-.scripts/build*.sh
-!.scripts/build-docker.sh
-*server.build.js
-!.gitkeep
+
+# service worker
 /public/sw*
