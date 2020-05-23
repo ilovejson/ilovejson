@@ -26,5 +26,9 @@ export const utils = [
   {
     path: '#repair',
     name: 'Repair'
+  },
+  {
+    path: '#schemagen',
+    name: 'Generate Schema'
   }
 ];
