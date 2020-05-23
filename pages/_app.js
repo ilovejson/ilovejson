@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
         <link rel='apple-touch-icon' href='/favs/apple-icon.png'></link>
         <meta name='theme-color' content='#317EFB' />
 
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
         <title>{title || 'iLoveJSON | Online JSON Tools for JSON Lovers'}</title>
 
