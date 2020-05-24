@@ -4,7 +4,7 @@ export const utils = [
     name: 'Compress'
   },
   {
-    path: '#beautify',
+    path: 'beautify',
     name: 'Beautify'
   },
   {
