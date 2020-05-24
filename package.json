@@ -4,6 +4,7 @@
     "description": "Every tool you need to work with JSONs in one place",
     "main": "index.js",
     "dependencies": {
+        "@zeit/next-css": "^1.0.1",
         "formidable": "^1.2.2",
         "json2csv": "^5.0.1",
         "next": "^9.4.0",
