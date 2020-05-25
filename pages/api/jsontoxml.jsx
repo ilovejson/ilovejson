@@ -35,7 +35,7 @@ export default (req, res) => {
 
     var options = {compact: true, ignoreComment: true, spaces: 4};
     var xmlOp = convert.json2xml(jsonRead, options);
-    
+
     const modifiedDate = new Date().getTime();
     const writePath = `${downloadDir}${modifiedDate}.xml`;
 
@@ -44,7 +44,7 @@ export default (req, res) => {
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. XML Conversion Successful.',
-      data: writePath
+      data: writePath.replace('./public', '')
     });
   });
 
