@@ -44,7 +44,7 @@ export default (req, res) => {
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. CSV Conversion Successful.',
-      data: writePath
+      data: writePath.replace('./public', '')
     });
   });
 

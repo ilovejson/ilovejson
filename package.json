@@ -5,6 +5,7 @@
     "main": "index.js",
     "dependencies": {
         "@zeit/next-css": "^1.0.1",
+        "axios": "^0.19.2",
         "formidable": "^1.2.2",
         "json2csv": "^5.0.1",
         "next": "^9.4.0",
