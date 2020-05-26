@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Layout from '../src/components/layout';
-import { tools } from '../src/constants/tools';
+import Layout from '@components/layout';
+import { tools } from '@constants/tools';
 
 const Home = () => (
   <Layout isHomePage>

@@ -1,5 +1,6 @@
 import { Component } from 'react'
-import Layout from '../../src/components/layout';
+import Layout from '@components/layout';
+import AlertError from '@components/error';
 
 class Beautify extends Component {
   constructor (props) {
@@ -33,7 +34,7 @@ class Beautify extends Component {
         this.setState({
           showError: false
         });
-      }, 2000);
+      }, 5000);
       return false;
     }
   }
@@ -87,17 +88,7 @@ class Beautify extends Component {
           </div>
 
           {/* Row */}
-          <div className={`${this.state.showError ? 'sm:flex' : 'hidden'} row mt-3`}>
-            <div className="col sm:w-1/2 mx-auto">
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong className="font-bold">Holy smokes! </strong>
-                <span className="block sm:inline">You've entered invalid JSON.</span>
-                <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
-                  <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" /></svg>
-                </span>
-              </div>
-            </div>
-          </div>
+          <AlertError message="You've entered invalid JSON." showError={this.state.showError} />
 
           {/* Row */}
           <div className="row sm:flex mt-5">
