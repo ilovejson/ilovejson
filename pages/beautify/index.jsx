@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import Layout from '@components/layout';
 import AlertError from '@components/error';
+import SourceEditor from '@components/source';
 
 class Beautify extends Component {
   constructor (props) {
@@ -53,27 +54,19 @@ class Beautify extends Component {
 
   render() {
     return (
-      <Layout isHomePage>
-        <h1 className="text-4xl font-semibold uppercase">
-          Beautify JSON
-        </h1>
-
-        <p>
-          Make JSON Easy to Read.
-        </p>
+      <Layout
+        title='Beautify JSON'
+        description='Make JSON Easy to Read.'
+        >
 
         <div className="app mt-5 w-full h-full p-8 font-sans">
           {/* Row */}
           <div className="row sm:flex">
             {/* Col Left */}
-            <div className="col sm:w-1/2">
-              <div className="box border rounded flex flex-col shadow bg-white box-height">
-                <div className="box__title bg-grey-lighter px-3 py-2 border-b">
-                  <h3 className="text-sm text-grey-darker font-medium">Source</h3>
-                </div>
-                <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={this.state.source} onChange={this.handleChange} />
-              </div>
-            </div>
+            <SourceEditor>
+              <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={this.state.source} onChange={this.handleChange} />
+            </SourceEditor>
+
             {/* Col Right */}
             <div className="col mt-8 sm:ml-8 sm:mt-0 sm:w-1/2">
               <div className="box border rounded flex flex-col shadow bg-white box-height">
