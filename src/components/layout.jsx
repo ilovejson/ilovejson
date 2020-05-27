@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { utils } from '../constants/utils';
+import { utils } from '@constants/utils';
 
 const Layout = ({
   children,
-  isHomePage
+  title,
+  description
 }) => (
   <div className="antialiased bg-gray-200 flex flex-col min-h-screen">
     <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
@@ -40,6 +41,13 @@ const Layout = ({
     </header>
 
     <main className="flex-grow">
+      <h1 className="text-4xl font-semibold uppercase">
+        {title}
+      </h1>
+
+      <p>
+        {description}
+      </p>
       {children}
     </main>
 

@@ -78,14 +78,10 @@ const Convert = () => {
   ]);
 
   return (
-    <Layout isHomePage>
-      <h1 className="text-4xl font-semibold uppercase">
-        {title}
-      </h1>
-
-      <p>
-        Make JSON files easy to read by converting them to CSV.
-      </p>
+    <Layout
+      title={title}
+      description='Make JSON files easy to read by converting them to CSV.'
+      >
 
       <div className="mt-10 w-full">
         <div {...getRootProps({ className: 'dropzone h-fifty', ...style })}>

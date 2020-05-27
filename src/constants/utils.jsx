@@ -12,7 +12,7 @@ export const utils = [
     name: 'Validate'
   },
   {
-    path: '#viewer',
+    path: 'viewer',
     name: 'Viewer'
   },
   {
