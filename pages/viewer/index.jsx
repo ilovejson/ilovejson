@@ -28,6 +28,11 @@ const Viewer = () => {
     setSourceJSON(JSON.stringify(evt.updated_src, null, 4));
   }
 
+  const style = {
+    'overflow-y': 'scroll',
+    height: '50vh'
+  }
+
   return (
     <Layout
       title='JSON Viewer'
@@ -39,7 +44,7 @@ const Viewer = () => {
         <div className="row sm:flex">
           {/* Col Left */}
           <SourceEditor>
-            <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={sourceJSON} onPaste={handleChange} onInput={handleChange} />
+            <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={sourceJSON} onChange={handleChange} />
           </SourceEditor>
 
           {/* Col Right */}
@@ -48,7 +53,7 @@ const Viewer = () => {
               <div className="box__title bg-grey-lighter px-3 py-2 border-b">
                 <h3 className="text-sm text-grey-darker font-medium inline-flex">Output</h3>
               </div>
-              <DynamicReactJson name='ilovejson' onAdd={updateSource} onEdit={updateSource} onDelete={updateSource} src={outputJSON} theme='shapeshifter:inverted' displayDataTypes />
+              <DynamicReactJson name='ilovejson' onAdd={updateSource} onEdit={updateSource} onDelete={updateSource} src={outputJSON} theme='shapeshifter:inverted' displayDataTypes style={style}/>
             </div>
           </div>
         </div>
