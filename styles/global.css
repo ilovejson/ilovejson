@@ -48,3 +48,7 @@ button:focus {
 .h-fifty {
   height: 50vh;
 }
+
+a:hover {
+  border-color: #DD2E44 !important;
+}

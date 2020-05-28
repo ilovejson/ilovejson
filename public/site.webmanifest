@@ -1,12 +1,6 @@
 {
   "name": "I ❤️ JSON",
   "short_name": "I Love JSON",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
-  "display": "fullscreen",
-  "orientation": "portrait",
-  "Scope": "/",
-  "start_url": "/",
   "icons": [
     {
       "src": "icons/icon-72x72.png",
@@ -49,5 +43,9 @@
       "type": "image/png"
     }
   ],
+  "theme_color": "#DD2E44",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
   "splash_pages": null
 }
