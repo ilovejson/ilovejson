@@ -38,7 +38,7 @@ const Convert = () => {
           'content-type': 'multipart/form-data'
         }
       }
-      post(`${globals.apiUrl}/${api}`, formData, config).then((response)=>{
+      post(`api/${api}`, formData, config).then((response)=>{
         setDownloadLink(response.data.data);
       }).catch(function (err) {
         console.error(err);
