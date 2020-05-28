@@ -1,3 +1,3 @@
 export const globals = {
-  apiUrl: 'http://localhost:3000/api'
+  apiUrl: (process.env.NODE_ENV === "production") ? 'http://localhost/api' : 'http://localhost:3000/api'
 }
