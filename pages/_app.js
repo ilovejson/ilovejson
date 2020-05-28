@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content={title || `ILoveJSON | Online JSON Tools for JSON Lovers`} />
         <meta property="og:site_name" content="ILoveJSON | Online JSON Tools for JSON Lovers" />
         <meta property="og:description" content={og ? og.description : `Online JSON Tools for JSON Lovers`} />
-        <meta property="og:image" content={og ? og.image : `/images/web-og-banner.png`} />
+        <meta property="og:image" content={og ? og.image : `https://www.ilovejson.com/images/web-og-banner.png`} />
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://www.ilovejson.com/"/>
 
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:creator" content="@ilovejson_com" />
         <meta name="twitter:title" content="ILoveJSON | Online JSON Tools for JSON Lovers" />
         <meta name="twitter:description" content="I Love JSON is an online service to modify, customize and work with JSON files freely." />
-        <meta name="twitter:image:src" content="/images/web-og-banner.png"/>
+        <meta name="twitter:image:src" content="https://www.ilovejson.com/images/web-og-banner.png"/>
 
         {/* Manifests */}
         <link rel='manifest' href='/site.webmanifest' />
