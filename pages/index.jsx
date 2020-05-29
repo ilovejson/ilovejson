@@ -10,7 +10,7 @@ const Home = () => (
     <div className="grid">
       {tools.map(({ from, to, description, slug }) => (
         <div className="card bg-white shadow rounded" key={slug}>
-          <Link href={`/${slug}`} as={slug}>
+          <Link href='/[slug]' as={`/${slug}`}>
             <a>
               <h3 className="font-medium">{from} &rarr; {to}</h3>
               <p>{description}</p>
