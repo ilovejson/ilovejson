@@ -8,7 +8,7 @@
         "axios": "^0.19.2",
         "formidable": "^1.2.2",
         "json2csv": "^5.0.1",
-        "next": "^9.4.0",
+        "next": "^9.4.4",
         "next-pwa": "^2.4.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
@@ -18,7 +18,7 @@
     },
     "devDependencies": {
         "autoprefixer": "^9.8.0",
-        "eslint": "^7.0.0",
+        "eslint": "^7.1.0",
         "eslint-plugin-react": "^7.20.0",
         "tailwindcss": "^1.4.6"
     },
