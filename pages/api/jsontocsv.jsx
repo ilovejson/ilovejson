@@ -1,9 +1,12 @@
 import formidable from 'formidable';
+import { initDirs } from '@utils/initdir';
 const { Parser } = require('json2csv');
-var fs = require('fs');
+import { globals } from '@constants/globals';
+const fs = require('fs');
+initDirs();
 
-const uploadDir = './public/uploads/jsontocsv';
-const downloadDir = './public/downloads/jsontocsv/'
+const uploadDir = globals.uploadDir + '/jsontocsv';
+const downloadDir = globals.downloadDir + '/jsontocsv/';
 
 export const config = {
   api: {
@@ -41,10 +44,12 @@ export default (req, res) => {
 
     fs.writeFileSync(writePath, csv, 'utf8');
 
+    console.log(writePath);
+
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. CSV Conversion Successful.',
-      data: writePath.replace('./public', '')
+      data: writePath.replace('dist', '')
     });
   });
 

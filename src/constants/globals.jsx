@@ -1,3 +1,4 @@
 export const globals = {
-  apiUrl: 'http://localhost:3000/api'
+  uploadDir :'dist/uploads',
+  downloadDir :'dist/downloads'
 }
