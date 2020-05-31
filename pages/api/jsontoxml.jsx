@@ -1,11 +1,14 @@
 import formidable from 'formidable';
 import { initDirs } from '@utils/initdir';
+import { globals } from '@constants/globals';
+import { uploadToFTP } from '@utils/ftp';
 const convert = require('xml-js');
+
 const fs = require('fs');
 initDirs();
 
-const uploadDir = './uploads/jsontoxml';
-const downloadDir = './downloads/jsontoxml/'
+const uploadDir = globals.uploadDir + '/jsontoxml';
+const downloadDir = globals.downloadDir + '/jsontoxml';
 
 export const config = {
   api: {
@@ -14,7 +17,7 @@ export const config = {
 }
 
 // Process a POST request
-export default (req, res) => {
+export default async (req, res) => {
   if (req.method !== 'POST') {
     return res.status(403).json({
       success: false,
@@ -22,10 +25,10 @@ export default (req, res) => {
     });
   }
 
-  const form = new formidable.IncomingForm();
+  const form = await new formidable.IncomingForm();
   form.uploadDir = uploadDir;
   form.keepExtensions = true;
-  form.parse(req, (_err, _fields, files) => {
+  await form.parse(req, async (_err, _fields, files) => {
     if (!(files && files.fileInfo)) {
       return res.status(400).json({
         success: false,
@@ -33,20 +36,22 @@ export default (req, res) => {
       });
     }
 
-    var jsonRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
+    var jsonRead = await fs.readFileSync(files?.fileInfo?.path, 'utf8');
 
     var options = {compact: true, ignoreComment: true, spaces: 4};
-    var xmlOp = convert.json2xml(jsonRead, options);
+    var xmlOp = await convert.json2xml(jsonRead, options);
 
     const modifiedDate = new Date().getTime();
-    const writePath = `${downloadDir}${modifiedDate}.xml`;
+    const filePath = `${downloadDir}/${modifiedDate}.xml`;
+    await fs.writeFileSync(filePath, xmlOp, 'utf8');
 
-    fs.writeFileSync(writePath, xmlOp, 'utf8');
+    const toPath = await filePath.replace('dist/downloads/', '');
+    await uploadToFTP(filePath, toPath);
 
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. XML Conversion Successful.',
-      data: writePath.replace('dist', '')
+      data: toPath
     });
   });
 

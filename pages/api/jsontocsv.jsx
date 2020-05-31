@@ -1,12 +1,14 @@
 import formidable from 'formidable';
 import { initDirs } from '@utils/initdir';
-const { Parser } = require('json2csv');
 import { globals } from '@constants/globals';
+import { uploadToFTP } from '@utils/ftp';
+const { Parser } = require('json2csv');
+
 const fs = require('fs');
 initDirs();
 
 const uploadDir = globals.uploadDir + '/jsontocsv';
-const downloadDir = globals.downloadDir + '/jsontocsv/';
+const downloadDir = globals.downloadDir + '/jsontocsv';
 
 export const config = {
   api: {
@@ -15,7 +17,8 @@ export const config = {
 }
 
 // Process a POST request
-export default (req, res) => {
+export default async (req, res) => {
+  // TODO: This should be in middleware.
   if (req.method !== 'POST') {
     return res.status(403).json({
       success: false,
@@ -23,10 +26,10 @@ export default (req, res) => {
     });
   }
 
-  const form = new formidable.IncomingForm();
+  const form = await new formidable.IncomingForm();
   form.uploadDir = uploadDir;
   form.keepExtensions = true;
-  form.parse(req, (_err, _fields, files) => {
+  await form.parse(req, async (_err, _fields, files) => {
     if (!(files && files.fileInfo)) {
       return res.status(400).json({
         success: false,
@@ -36,20 +39,20 @@ export default (req, res) => {
 
     var jsonRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
 
-    const json2csvParser = new Parser();
-    const csv = json2csvParser.parse(JSON.parse(jsonRead));
+    const json2csvParser = await new Parser();
+    const csv = await json2csvParser.parse(JSON.parse(jsonRead));
 
     const modifiedDate = new Date().getTime();
-    const writePath = `${downloadDir}${modifiedDate}.csv`;
+    const filePath = `${downloadDir}/${modifiedDate}.csv`;
+    await fs.writeFileSync(filePath, csv, 'utf8');
 
-    fs.writeFileSync(writePath, csv, 'utf8');
-
-    console.log(writePath);
+    const toPath = await filePath.replace('dist/downloads/', '');
+    await uploadToFTP(filePath, toPath);
 
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. CSV Conversion Successful.',
-      data: writePath.replace('dist', '')
+      data: toPath
     });
   });
 
