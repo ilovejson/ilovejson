@@ -1,9 +1,11 @@
 import formidable from 'formidable';
+import { initDirs } from '@utils/initdir';
 const convert = require('xml-js');
-var fs = require('fs');
+const fs = require('fs');
+initDirs();
 
-const uploadDir = './public/uploads/jsontoxml';
-const downloadDir = './public/downloads/jsontoxml/'
+const uploadDir = './uploads/jsontoxml';
+const downloadDir = './downloads/jsontoxml/'
 
 export const config = {
   api: {
@@ -44,7 +46,7 @@ export default (req, res) => {
     return res.status(200).json({
       success: true,
       message: 'I ❤️ JSON. XML Conversion Successful.',
-      data: writePath.replace('./public', '')
+      data: writePath.replace('dist', '')
     });
   });
 
