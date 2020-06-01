@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { useDropzone } from 'react-dropzone';
 import { post } from 'axios';
 
 import Layout from '@components/layout';
 import { globals } from '@constants/globals';
+import { tools } from '@constants/tools';
 
 const activeStyle = {
   borderColor: '#2196f3'
@@ -19,12 +20,9 @@ const rejectStyle = {
 };
 
 // TODO: Convert it in to actual component
-const Convert = () => {
-  const router = useRouter()
-  const { slug } = router.query;
+export default ({slug}) => {
   const title = slug?.replace(/-/g, ' ');
   const api = slug?.replace(/-/g, '');
-
   const [downloadLink, setDownloadLink] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -48,10 +46,6 @@ const Convert = () => {
         setLoading(false);
       });
     }
-  }
-
-  const downloadFile = () => {
-    window.open(downloadLink, '_blank');
   }
 
   const {
@@ -121,14 +115,25 @@ const Convert = () => {
 
         {/* Row */}
         <div className={downloadLink ? 'row sm:flex mt-5' : 'hidden'}>
-          <button className='bg-red-400 hover:bg-red-600 text-white font-semibold py-2 px-4 w-100 border border-gray-400 rounded shadow inline-flex mx-auto' onClick={downloadFile}>
-            <svg className="fill-current w-4 h-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-            <span>Download</span>
-          </button>
+          <a href={downloadLink} className='mx-auto' download>
+            <button className='bg-red-400 hover:bg-red-600 text-white font-semibold py-2 px-4 w-100 border border-gray-400 rounded shadow inline-flex'>
+              <svg className="fill-current w-4 h-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+              <span>Download</span>
+            </button>
+          </a>
         </div>
       </div>
     </Layout>
   );
 }
 
-export default Convert;
+export const getStaticPaths = async () => {
+  const slugs = tools.map((t) => t.slug);
+  const paths = slugs.map((slug) => ({ params: { slug } }));
+  return { paths, fallback: false }
+}
+
+export const getStaticProps = async ({ params }) => {
+  const slug = params.slug;
+  return {props: { slug }};
+}

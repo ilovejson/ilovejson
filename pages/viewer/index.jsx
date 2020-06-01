@@ -1,6 +1,6 @@
 
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Layout from '@components/layout';
 import SourceEditor from '@components/source';
 
