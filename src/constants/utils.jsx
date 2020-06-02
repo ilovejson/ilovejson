@@ -1,6 +1,6 @@
 export const utils = [
   {
-    path: '#compress',
+    path: 'compress',
     name: 'Compress'
   },
   {
