@@ -1,0 +1,38 @@
+name: Update NPM Dependencies
+
+on:
+  schedule:
+    - cron: "0 10 * * 1"
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Update dependencies
+        id: vars
+        run: |
+          npm i -g npm-check-updates
+          ncu -u
+          npm i
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: update dependencies
+          title: Automated Dependency Updates
+          body: This is an auto-generated PR with dependency updates.
+          branch: dep-updates
+          branch-suffix: none
