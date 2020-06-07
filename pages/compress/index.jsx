@@ -62,7 +62,7 @@ const Compress = () => {
                 <button className="py-1 px-4 shadow no-underline rounded-sm bg-green-400 text-white font-sans font-semibold text-xs border-green-600 btn-primary hover:text-white hover:bg-green-600 focus:outline-none active:shadow-none float-right" onClick={copyCodeToClipboard} disabled={!outputJSON}>Copy</button>
                 <span className={`mr-2 text-xs text-green-400 float-right align-middle ${copied ? 'visible' : 'invisible'}`}>Copied to Clipboard!</span>
               </div>
-              <textarea className="resize text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="output" value={outputJSON} ref={textArea} readOnly/>
+              <textarea className="resize text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="output" value={outputJSON} ref={textArea} onChange={() => {}}/>
             </div>
           </div>
         </div>
@@ -80,6 +80,6 @@ const Compress = () => {
       </div>
     </Layout>
   )
-
 }
+
 export default Compress
