@@ -3,33 +3,40 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Layout from '@components/layout';
 import SourceEditor from '@components/source';
+import AlertError from '@components/error';
 
 const Viewer = () => {
-  // Note : We need to do dynamic loading of component, issue ref
+  // Note : We need to dynamically load this component, issue ref
   // https://github.com/mac-s-g/react-json-view/issues/121#issuecomment-437267883
   const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false });
 
-  const [sourceJSON, setSourceJSON] = useState('{"store":{"book":[{"category":"reference","author":"Nigel Rees","title":"Sayings of the Century","price":8.95},{"category":"fiction","author":"Evelyn Waugh","title":"Sword of Honour","price":12.99},{"category":"fiction","author":"J. R. R. Tolkien","title":"The Lord of the Rings","isbn":"0-395-19395-8","price":22.99}],"bicycle":{"color":"red","price":19.95}}}');
-
-  const [outputJSON, setOutputJSON] = useState({"store":{"book":[{"category":"reference","author":"Nigel Rees","title":"Sayings of the Century","price":8.95},{"category":"fiction","author":"Evelyn Waugh","title":"Sword of Honour","price":12.99},{"category":"fiction","author":"J. R. R. Tolkien","title":"The Lord of the Rings","isbn":"0-395-19395-8","price":22.99}],"bicycle":{"color":"red","price":19.95}}});
+  const [sourceJSON, setSourceJSON] = useState('');
+  const [outputJSON, setOutputJSON] = useState('');
+  const [showError, setShowError] = useState(false);
 
   const handleChange = (e) => {
     setSourceJSON(e.target.value);
     try {
       if (JSON.parse(sourceJSON) && !!sourceJSON) {
         setOutputJSON(JSON.parse(sourceJSON));
+        setShowError(false);
       }
     } catch (e) {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 5000);
       return false
     }
   }
+
 
   const updateSource = (evt) => {
     setSourceJSON(JSON.stringify(evt.updated_src, null, 4));
   }
 
   const style = {
-    'overflow-y': 'scroll',
+    overflowY: 'scroll',
     height: '50vh'
   }
 
@@ -44,7 +51,7 @@ const Viewer = () => {
         <div className="row sm:flex">
           {/* Col Left */}
           <SourceEditor>
-            <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={sourceJSON} onChange={handleChange} />
+            <textarea className="resize-none border rounded text-grey-darkest flex-1 p-2 m-1 bg-transparent" name="source" value={sourceJSON} onChange={handleChange} onKeyUpCapture={handleChange} />
           </SourceEditor>
 
           {/* Col Right */}
@@ -57,6 +64,9 @@ const Viewer = () => {
             </div>
           </div>
         </div>
+
+        {/* Row */}
+        <AlertError message="You've entered invalid JSON." showError={showError} />
       </div>
     </Layout>
   )
