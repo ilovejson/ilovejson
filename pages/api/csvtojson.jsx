@@ -2,7 +2,7 @@ import formidable from 'formidable';
 import { initDirs } from '@utils/initdir';
 import { globals } from '@constants/globals';
 import { uploadToFTP } from '@utils/ftp';
-import { json2csvAsync } from 'json-2-csv';
+import { csv2jsonAsync } from 'json-2-csv';
 import { ReE, ReS } from '@utils/reusables';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -11,8 +11,8 @@ const cdnUrl = process.env.CDN_URL || '';
 const fs = require('fs');
 initDirs();
 
-const uploadDir = globals.uploadDir + '/jsontocsv';
-const downloadDir = globals.downloadDir + '/jsontocsv';
+const uploadDir = globals.uploadDir + '/csvtojson';
+const downloadDir = globals.downloadDir + '/csvtojson';
 
 export const config = {
   api: {
@@ -22,7 +22,6 @@ export const config = {
 
 const options = {
   excelBOM: true,
-  expandArrayObjects: false, // Should objects in array values be deep-converted to CSV?
   trimHeaderFields: true,
   trimFieldValues: true,
 };
@@ -42,15 +41,16 @@ export default async (req, res) => {
       return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
     }
 
-    var jsonRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
+    var csvRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
     try {
-      if (JSON.parse(jsonRead) && !!jsonRead) {
-        await json2csvAsync(JSON.parse(jsonRead), options)
-          .then(async (csv) => {
+      if (!!csvRead) {
+        await csv2jsonAsync(csvRead, options)
+          .then(async (json) => {
+
             const modifiedDate = new Date().getTime();
-            const filePath = `${downloadDir}/${modifiedDate}.csv`;
+            const filePath = `${downloadDir}/${modifiedDate}.json`;
             var toPath = '';
-            await fs.writeFileSync(filePath, csv, 'utf8');
+            await fs.writeFileSync(filePath, JSON.stringify(json, undefined, 4), 'utf8');
 
             if (isProd) {
               toPath = await filePath.replace('dist/downloads/', '');
@@ -60,7 +60,7 @@ export default async (req, res) => {
             }
 
             return ReS(res, {
-              message: 'I ❤️ JSON. JSON to CSV Conversion Successful.',
+              message: 'I ❤️ JSON. CSV to JSON Conversion Successful.',
               data: `${cdnUrl}/${toPath}`
             });
           })
@@ -68,10 +68,9 @@ export default async (req, res) => {
             console.log('ERROR: ' + err.message);
             return ReE(res, err.message);
           });
-
       }
     } catch (e) {
-      return ReE(res, 'I ❤️ JSON. But you have entered invalid JSON.');
+      return ReE(res, 'I ❤️ JSON. But you have entered invalid CSV.');
     }
 });
 
