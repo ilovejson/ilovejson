@@ -5,11 +5,11 @@
     "main": "index.js",
     "dependencies": {
         "@zeit/next-css": "^1.0.1",
-        "basic-ftp": "^4.5.4",
+        "basic-ftp": "^4.6.1",
         "formidable": "^1.2.2",
-        "json-2-csv": "^3.7.0",
+        "json-2-csv": "^3.7.1",
         "next": "^9.4.4",
-        "next-pwa": "^2.4.1",
+        "next-pwa": "^2.5.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-dropzone": "^11.0.1",
@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "autoprefixer": "^9.8.0",
-        "eslint": "^7.1.0",
+        "eslint": "^7.2.0",
         "eslint-plugin-react": "^7.20.0",
         "tailwindcss": "^1.4.6"
     },
