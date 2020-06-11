@@ -28,7 +28,7 @@ export const utils = [
     name: 'Repair'
   },
   {
-    path: '#schemagen',
+    path: 'generateschema',
     name: 'Generate Schema'
   }
 ];
