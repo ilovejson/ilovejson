@@ -8,7 +8,7 @@ export const utils = [
     name: 'Beautify'
   },
   {
-    path: '#validate',
+    path: 'validate',
     name: 'Validate'
   },
   {
@@ -18,10 +18,6 @@ export const utils = [
   {
     path: '#editor',
     name: 'Editor'
-  },
-  {
-    path: '#merge',
-    name: 'Merge'
   },
   {
     path: '#repair',

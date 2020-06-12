@@ -4,6 +4,7 @@
     "description": "Every tool you need to work with JSONs in one place",
     "main": "index.js",
     "dependencies": {
+        "@prantlf/jsonlint": "^10.2.0",
         "@zeit/next-css": "^1.0.1",
         "basic-ftp": "^4.6.1",
         "formidable": "^1.2.2",
