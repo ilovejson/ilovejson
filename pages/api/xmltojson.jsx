@@ -2,8 +2,8 @@ import formidable from 'formidable';
 import { initDirs } from '@utils/initdir';
 import { globals } from '@constants/globals';
 import { uploadToFTP } from '@utils/ftp';
-import YAML from 'yaml';
 import { ReE, ReS } from '@utils/reusables';
+const convert = require('xml-js');
 
 const isProd = process.env.NODE_ENV === 'production';
 const cdnUrl = process.env.CDN_URL || '';
@@ -11,8 +11,8 @@ const cdnUrl = process.env.CDN_URL || '';
 const fs = require('fs');
 initDirs();
 
-const uploadDir = globals.uploadDir + '/yamltojson';
-const downloadDir = globals.downloadDir + '/yamltojson';
+const uploadDir = globals.uploadDir + '/xmltojson';
+const downloadDir = globals.downloadDir + '/xmltojson';
 
 export const config = {
   api: {
@@ -20,9 +20,11 @@ export const config = {
   },
 }
 
-const yamlOptions = {
-  indent: 4,
-  prettyErrors: true,
+const jsonOptions = {
+  ignoreComment: true,
+  alwaysChildren: true,
+  compact: true,
+  spaces: 4
 };
 
 // Process a POST request
@@ -40,15 +42,20 @@ export default async (req, res) => {
     if (!(files && files.fileInfo)) {
       return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
     }
-
-    var yamlRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
+    // Read the file - what's new?
+    var xmlRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
+    
     try {
-      const yamlContent = await YAML.parse(yamlRead, yamlOptions);
-      if (!!yamlContent) {
+      //Convert it to XML -> Json
+      var jsonContent = await convert.xml2json(xmlRead, jsonOptions);
+      
+      //Is it converted?
+      if (!!jsonContent) {
+
         const modifiedDate = new Date().getTime();
         const filePath = `${downloadDir}/${modifiedDate}.json`;
         var toPath = '';
-        await fs.writeFileSync(filePath, JSON.stringify(yamlContent, undefined, 4), 'utf8');
+        await fs.writeFileSync(filePath, jsonContent, 'utf8');
 
         if (isProd) {
           toPath = await filePath.replace('dist/downloads/', '');
@@ -56,17 +63,17 @@ export default async (req, res) => {
         } else {
           toPath = await filePath.replace('dist/', '');
         }
-
+        
+        //Parsed
         return ReS(res, {
-          message: 'I ❤️ JSON. YAML to JSON Conversion Successful.',
+          message: 'I ❤️ JSON. XML to JSON Conversion Successful.',
           data: `${cdnUrl}/${toPath}`
         });
 
-
       }
     } catch (e) {
-      return ReE(res, 'I ❤️ JSON. But you have entered invalid YAML.');
+      return ReE(res, 'I ❤️ JSON. But you have entered invalid XML.');
     }
-});
+  });
 
 }
