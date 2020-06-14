@@ -27,7 +27,7 @@ export default ({ slug }) => {
       formData.append('fileInfo', acceptedFiles[0]);
       postFile(`api/${api}`, formData)
         .then(response => {
-          setDownloadLink(`${response.data.data}`);
+          setDownloadLink(`${response.data}`);
           setLoading(false);
           setShowError(false);
         }).catch(err => {
