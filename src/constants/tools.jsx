@@ -42,33 +42,9 @@ export const tools = [
     slug: 'json-to-sql'
   },
   {
-    from: 'SQL',
-    to: 'JSON',
-    description: 'Make SQL files easy to read by converting them to JSON.',
-    slug: 'sql-to-json'
-  },
-  {
     from: 'JSON',
     to: 'HTML',
     description: 'Make JSON files easy to read by converting them to HTML TABLE.',
     slug: 'json-to-table'
-  },
-  {
-    from: 'HTML',
-    to: 'JSON',
-    description: 'Make HTML TABLE files easy to read by converting them to JSON.',
-    slug: 'table-to-json'
-  },
-  {
-    from: 'JSON',
-    to: 'ARRAY',
-    description: 'Make JSON files easy to read by converting them to ARRAY.',
-    slug: 'json-to-array'
-  },
-  {
-    from: 'ARRAY',
-    to: 'JSON',
-    description: 'Make ARRAY files easy to read by converting them to JSON.',
-    slug: 'array-to-json'
-  },
+  }
 ];
