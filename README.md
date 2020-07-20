@@ -21,6 +21,12 @@ npm run dev
 yarn dev
 ```
 
+Or start with Docker
+
+```bash
+docker-compose up
+```
+
 ## API Sample
 http://localhost:3000/api/ilovejson
 
