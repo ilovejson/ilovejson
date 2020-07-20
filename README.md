@@ -24,8 +24,6 @@ yarn dev
 Or start with Docker
 
 ```bash
-docker-compose build
-
 docker-compose up
 ```
 

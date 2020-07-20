@@ -1,13 +1,20 @@
-FROM node:latest
+# Base on official Node.js Alpine image
+FROM node:alpine
 
+# Set working directory
 WORKDIR /usr/src/app
 
-COPY package.json .
+# Copy package.json and package-lock.json before other files
+COPY ./package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy all files
 COPY . .
 
+# Expose the listening port
 EXPOSE 3000
 
-CMD npm run dev
+# Run npm script when container starts
+CMD "npm" "run" "dev"
