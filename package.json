@@ -11,19 +11,19 @@
         "generate-schema": "^2.6.0",
         "json-2-csv": "^3.7.5",
         "next": "^9.4.4",
-        "next-pwa": "^3.0.3",
+        "next-pwa": "^3.1.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-dropzone": "^11.0.1",
+        "react-dropzone": "^11.0.2",
         "react-json-view": "^1.19.1",
         "xml-js": "^1.6.11",
         "yaml": "^1.10.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.8.5",
-        "eslint": "^7.4.0",
+        "eslint": "^7.5.0",
         "eslint-plugin-react": "^7.20.3",
-        "tailwindcss": "^1.4.6"
+        "tailwindcss": "^1.5.1"
     },
     "scripts": {
         "dev": "next",
