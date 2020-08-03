@@ -10,7 +10,7 @@
         "formidable": "^1.2.2",
         "generate-schema": "^2.6.0",
         "json-2-csv": "^3.7.6",
-        "next": "^9.4.4",
+        "next": "^9.5.1",
         "next-pwa": "^3.1.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
@@ -20,10 +20,10 @@
         "yaml": "^1.10.0"
     },
     "devDependencies": {
-        "autoprefixer": "^9.8.5",
-        "eslint": "^7.5.0",
-        "eslint-plugin-react": "^7.20.4",
-        "tailwindcss": "^1.5.2"
+        "autoprefixer": "^9.8.6",
+        "eslint": "^7.6.0",
+        "eslint-plugin-react": "^7.20.5",
+        "tailwindcss": "^1.6.1"
     },
     "scripts": {
         "dev": "next",
