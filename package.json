@@ -23,7 +23,7 @@
         "autoprefixer": "^9.8.6",
         "eslint": "^7.6.0",
         "eslint-plugin-react": "^7.20.5",
-        "tailwindcss": "^1.6.1"
+        "tailwindcss": "^1.6.2"
     },
     "scripts": {
         "dev": "next",
