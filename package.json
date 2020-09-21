@@ -14,16 +14,16 @@
         "next-pwa": "^3.1.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-dropzone": "^11.1.0",
+        "react-dropzone": "^11.2.0",
         "react-json-view": "^1.19.1",
         "xml-js": "^1.6.11",
         "yaml": "^1.10.0"
     },
     "devDependencies": {
-        "autoprefixer": "^9.8.6",
+        "autoprefixer": "^10.0.0",
         "eslint": "^7.9.0",
         "eslint-plugin-react": "^7.20.6",
-        "tailwindcss": "^1.8.9"
+        "tailwindcss": "^1.8.10"
     },
     "scripts": {
         "dev": "next",
