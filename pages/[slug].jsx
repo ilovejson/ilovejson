@@ -9,7 +9,7 @@ import { mimeTypes } from '@constants/mimetypes';
 
 
 // TODO: Convert it in to actual component
-export default ({ slug }) => {
+const Slug = ({ slug }) => {
   const title = slug?.replace(/-/g, ' ');
   const api = slug?.replace(/-/g, '');
   const fileType = slug?.split('-');
@@ -48,15 +48,16 @@ export default ({ slug }) => {
     isDragReject,
     isDragAccept,
     acceptedFiles,
-    rejectedFiles
+    fileRejections
   } = useDropzone({
+    maxFiles: 1,
     accept: mimeType,
     minSize: 1,
     maxSize,
     noKeyboard: true
   });
 
-  const isFileTooLarge = rejectedFiles?.length > 0 && rejectedFiles[0].size > maxSize;
+  const isFileTooLarge = fileRejections?.length > 0 && fileRejections[0].size > maxSize;
 
   const style = useMemo(() => ({
     ...(isDragActive ? { borderColor: '#2196f3' } : {}),
@@ -122,6 +123,8 @@ export default ({ slug }) => {
     </Layout>
   );
 }
+
+export default Slug;
 
 export const getStaticPaths = async () => {
   const slugs = tools.map((t) => t.slug);

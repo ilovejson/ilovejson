@@ -3,27 +3,31 @@
     "version": "0.0.1",
     "description": "Every tool you need to work with JSONs in one place",
     "main": "index.js",
+    "private": true,
     "dependencies": {
         "@prantlf/jsonlint": "^10.2.0",
         "@zeit/next-css": "^1.0.1",
         "basic-ftp": "^4.6.2",
         "formidable": "^1.2.2",
         "generate-schema": "^2.6.0",
-        "json-2-csv": "^3.7.6",
+        "json-2-csv": "^3.7.7",
         "next": "^9.5.3",
-        "next-pwa": "^3.1.4",
+        "next-pwa": "^3.1.5",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-dropzone": "^11.1.0",
+        "react-dropzone": "^11.2.0",
         "react-json-view": "^1.19.1",
         "xml-js": "^1.6.11",
         "yaml": "^1.10.0"
     },
     "devDependencies": {
         "autoprefixer": "^9.8.6",
-        "eslint": "^7.9.0",
-        "eslint-plugin-react": "^7.20.6",
-        "tailwindcss": "^1.8.9"
+        "eslint": "^7.10.0",
+        "eslint-plugin-react": "^7.21.3",
+        "tailwindcss": "^1.8.10"
+    },
+    "peerDependencies": {
+        "postcss": "^8.0.0"
     },
     "scripts": {
         "dev": "next",
