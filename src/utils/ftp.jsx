@@ -2,6 +2,7 @@ const ftp = require("basic-ftp");
 
 export const uploadToFTP = async (filePath, toPath) => {
   const client = new ftp.Client();
+  client.ftp.verbose = true
   try {
     await client.access({
       host: process.env.FTP_HOST,
