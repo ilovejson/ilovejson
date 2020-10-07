@@ -33,6 +33,7 @@ const Viewer = () => {
 
   const updateSource = (evt) => {
     setSourceJSON(JSON.stringify(evt.updated_src, null, 4));
+    setOutputJSON(JSON.parse(JSON.stringify(evt.updated_src, null, 4)));
   }
 
   const style = {
