@@ -10,8 +10,8 @@
         "basic-ftp": "^4.6.2",
         "formidable": "^1.2.2",
         "generate-schema": "^2.6.0",
-        "json-2-csv": "^3.7.7",
-        "next": "^9.5.3",
+        "json-2-csv": "^3.7.8",
+        "next": "^9.5.5",
         "next-pwa": "^3.1.5",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
@@ -21,13 +21,13 @@
         "yaml": "^1.10.0"
     },
     "devDependencies": {
-        "autoprefixer": "^9.8.6",
-        "eslint": "^7.10.0",
-        "eslint-plugin-react": "^7.21.3",
-        "tailwindcss": "^1.8.10"
+        "autoprefixer": "^10.0.1",
+        "eslint": "^7.11.0",
+        "eslint-plugin-react": "^7.21.4",
+        "tailwindcss": "^1.8.13"
     },
     "peerDependencies": {
-        "postcss": "^8.0.0"
+        "postcss": "^8.1.1"
     },
     "scripts": {
         "dev": "next",
