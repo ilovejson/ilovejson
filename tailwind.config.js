@@ -1,5 +1,14 @@
 module.exports = {
-  purge: ['./src/components/**/*.jsx', './pages/**/*.jsx'],
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+    standardFontWeights: true,
+    defaultLineHeights: true,
+  },
+  purge: [
+    './src/components/**/*.jsx', 
+    './pages/**/*.jsx'
+  ],
   theme: {
     extend: {},
   },
