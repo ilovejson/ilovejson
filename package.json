@@ -7,27 +7,27 @@
     "dependencies": {
         "@prantlf/jsonlint": "^10.2.0",
         "@zeit/next-css": "^1.0.1",
-        "basic-ftp": "^4.6.2",
+        "basic-ftp": "^4.6.3",
         "formidable": "^1.2.2",
         "generate-schema": "^2.6.0",
-        "json-2-csv": "^3.7.8",
-        "next": "^9.5.5",
-        "next-pwa": "^3.1.5",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-dropzone": "^11.2.0",
+        "json-2-csv": "^3.8.0",
+        "next": "^10.0.3",
+        "next-pwa": "^5.0.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-dropzone": "^11.2.4",
         "react-json-view": "^1.19.1",
         "xml-js": "^1.6.11",
         "yaml": "^1.10.0"
     },
     "devDependencies": {
-        "autoprefixer": "^9.8.6",
-        "eslint": "^7.11.0",
-        "eslint-plugin-react": "^7.21.4",
-        "tailwindcss": "^1.8.13"
+        "autoprefixer": "^10.1.0",
+        "eslint": "^7.15.0",
+        "eslint-plugin-react": "^7.21.5",
+        "tailwindcss": "^2.0.2"
     },
     "peerDependencies": {
-        "postcss": "^8.0.0"
+        "postcss": "^8.2.1"
     },
     "scripts": {
         "dev": "next",
