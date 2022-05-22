@@ -1,12 +1,8 @@
-import formidable from 'formidable';
+import { IncomingForm } from 'formidable';
 import { initDirs } from '@utils/initdir';
 import { globals } from '@constants/globals';
-import { uploadToFTP } from '@utils/ftp';
 import { ReE, ReS } from '@utils/reusables';
 const convert = require('xml-js');
-
-const isProd = process.env.NODE_ENV === 'production';
-const cdnUrl = process.env.CDN_URL || '';
 
 const fs = require('fs');
 initDirs();
@@ -32,39 +28,39 @@ export default async (req, res) => {
     return ReE(res, 'I ❤️ JSON. But you shouldn\'t be here.');
   }
 
-  const form = await new formidable.IncomingForm();
-  form.uploadDir = uploadDir;
-  form.keepExtensions = true;
-  await form.parse(req, async (_err, _fields, files) => {
-    if (!(files && files.fileInfo)) {
-      return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
-    }
-
-    var jsonRead = await fs.readFileSync(files?.fileInfo?.path, 'utf8');
-
-    try {
-      if (JSON.parse(jsonRead) && !!jsonRead) {
-        var xmlOp = await convert.json2xml(jsonRead, xmlOptions);
-
-        const modifiedDate = new Date().getTime();
-        const filePath = `${downloadDir}/${modifiedDate}.xml`;
-        var toPath = '';
-        await fs.writeFileSync(filePath, xmlOp, 'utf8');
-
-        if (isProd) {
-          toPath = await filePath.replace('dist/downloads/', '');
-          await uploadToFTP(filePath, toPath);
-        } else {
-          toPath = await filePath.replace('dist/', '');
-        }
-
-        return ReS(res, {
-          message: 'I ❤️ JSON. JSON to XML Conversion Successful.',
-          data: `${cdnUrl}/${toPath}`
-        });
-      }
-    } catch (e) {
-      return ReE(res, 'I ❤️ JSON. But you have entered invalid JSON.');
-    }
+  // parse form with a Promise wrapper
+  const data = await new Promise((resolve, reject) => {
+    const form = new IncomingForm();
+    form.uploadDir = uploadDir;
+    form.keepExtensions = true;
+    form.parse(req, async (_err, _fields, files) => {
+      if (_err) return reject(_err);
+      resolve({ _fields, files });
+    });
   });
+
+  if (!(data.files && data.files.fileInfo)) {
+    return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
+  }
+
+  var jsonRead = fs.readFileSync(data.files?.fileInfo?.filepath, 'utf8');
+
+  try {
+    if (JSON.parse(jsonRead) && !!jsonRead) {
+      var xmlOp = convert.json2xml(jsonRead, xmlOptions);
+
+      const modifiedDate = new Date().getTime();
+      const filePath = `${downloadDir}/${modifiedDate}.xml`;
+      fs.writeFileSync(filePath, xmlOp, 'utf8');
+
+      let toPath = filePath.replace('public/', '');
+
+      return ReS(res, {
+        message: 'I ❤️ JSON. JSON to XML Conversion Successful.',
+        data: `/${toPath}`
+      });
+    }
+  } catch (e) {
+    return ReE(res, 'I ❤️ JSON. But you have entered invalid JSON.');
+  }
 }

@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+package-lock.json
 
 # testing
 /coverage
@@ -11,6 +12,8 @@
 /dist
 /.next
 /out
+/public/downloads
+/public/uploads
 
 # misc
 .DS_Store

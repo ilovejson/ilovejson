@@ -1,4 +1,4 @@
 export const globals = {
-  uploadDir :'dist/uploads',
-  downloadDir :'dist/downloads'
+  uploadDir :'public/uploads',
+  downloadDir :'public/downloads'
 }

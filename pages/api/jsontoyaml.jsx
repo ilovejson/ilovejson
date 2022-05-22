@@ -1,12 +1,8 @@
-import formidable from 'formidable';
+import { IncomingForm } from 'formidable';
 import { initDirs } from '@utils/initdir';
 import { globals } from '@constants/globals';
-import { uploadToFTP } from '@utils/ftp';
 import YAML from 'yaml';
 import { ReE, ReS } from '@utils/reusables';
-
-const isProd = process.env.NODE_ENV === 'production';
-const cdnUrl = process.env.CDN_URL || '';
 
 const fs = require('fs');
 initDirs();
@@ -32,41 +28,39 @@ export default async (req, res) => {
     return ReE(res, 'I ❤️ JSON. But you shouldn\'t be here.');
   }
 
-  const form = await new formidable.IncomingForm();
-  form.uploadDir = uploadDir;
-  form.keepExtensions = true;
-  await form.parse(req, async (_err, _fields, files) => {
-    if (!(files && files.fileInfo)) {
-      return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
+  // parse form with a Promise wrapper
+  const data = await new Promise((resolve, reject) => {
+    const form = new IncomingForm();
+    form.uploadDir = uploadDir;
+    form.keepExtensions = true;
+    form.parse(req, async (_err, _fields, files) => {
+      if (_err) return reject(_err);
+      resolve({ _fields, files });
+    });
+  });
+
+  if (!(data.files && data.files.fileInfo)) {
+    return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
+  }
+
+  var jsonRead = fs.readFileSync(data.files?.fileInfo?.filepath, 'utf8');
+  try {
+    if (JSON.parse(jsonRead) && !!jsonRead) {
+      const yaml = YAML.stringify(JSON.parse(jsonRead), yamlOptions);
+
+      const modifiedDate = new Date().getTime();
+      const filePath = `${downloadDir}/${modifiedDate}.yml`;
+      fs.writeFileSync(filePath, yaml, 'utf8');
+
+      let toPath = filePath.replace('public/', '');
+
+      return ReS(res, {
+        message: 'I ❤️ JSON. JSON to YAML Conversion Successful.',
+        data: `/${toPath}`
+      });
     }
-
-    var jsonRead = fs.readFileSync(files?.fileInfo?.path, 'utf8');
-    try {
-      if (JSON.parse(jsonRead) && !!jsonRead) {
-        const yaml = await YAML.stringify(JSON.parse(jsonRead), yamlOptions);
-
-        const modifiedDate = new Date().getTime();
-        const filePath = `${downloadDir}/${modifiedDate}.yml`;
-        var toPath = '';
-        await fs.writeFileSync(filePath, yaml, 'utf8');
-
-        if (isProd) {
-          toPath = await filePath.replace('dist/downloads/', '');
-          await uploadToFTP(filePath, toPath);
-        } else {
-          toPath = await filePath.replace('dist/', '');
-        }
-
-        return ReS(res, {
-          message: 'I ❤️ JSON. JSON to YAML Conversion Successful.',
-          data: `${cdnUrl}/${toPath}`
-        });
-
-
-      }
-    } catch (e) {
-      return ReE(res, 'I ❤️ JSON. But you have entered invalid JSON.');
-    }
-});
+  } catch (e) {
+    return ReE(res, 'I ❤️ JSON. But you have entered invalid JSON.');
+  }
 
 }

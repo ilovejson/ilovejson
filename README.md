@@ -1,23 +1,19 @@
 # I ❤️ JSON
 
 ## Prerequisites
-- NodeJS v13.x
+- NodeJS v16.x
 - Visual Studio Code
 
 ## Getting Started
 
 Installing Dependencies
 ```bash
-npm install
-# or
-yarn install
+yarn
 ```
 
 Run Server
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 

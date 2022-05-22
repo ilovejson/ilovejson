@@ -5,29 +5,25 @@
     "main": "index.js",
     "private": true,
     "dependencies": {
-        "@prantlf/jsonlint": "^10.2.0",
-        "@zeit/next-css": "^1.0.1",
-        "basic-ftp": "^4.6.2",
-        "formidable": "^1.2.2",
+        "@prantlf/jsonlint": "^11.6.0",
+        "formidable": "^2.0.1",
         "generate-schema": "^2.6.0",
-        "json-2-csv": "^3.7.8",
-        "next": "^9.5.5",
-        "next-pwa": "^3.1.5",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-dropzone": "^11.2.0",
-        "react-json-view": "^1.19.1",
+        "json-2-csv": "^3.17.1",
+        "next": "^12.1.6",
+        "next-pwa": "^5.5.2",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "react-dropzone": "^14.2.1",
+        "react-json-view": "^1.21.3",
         "xml-js": "^1.6.11",
-        "yaml": "^1.10.0"
+        "yaml": "^2.1.0"
     },
     "devDependencies": {
-        "autoprefixer": "^9.8.6",
-        "eslint": "^7.11.0",
-        "eslint-plugin-react": "^7.21.4",
-        "tailwindcss": "^1.8.13"
-    },
-    "peerDependencies": {
-        "postcss": "^8.0.0"
+        "autoprefixer": "^10.4.0",
+        "eslint": "^8.16.0",
+        "eslint-plugin-react": "^7.30.0",
+        "postcss": "^8.4.5",
+        "tailwindcss": "^3.0.7"
     },
     "scripts": {
         "dev": "next",
