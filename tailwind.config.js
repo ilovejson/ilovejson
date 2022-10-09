@@ -5,8 +5,8 @@ module.exports = {
     standardFontWeights: true,
     defaultLineHeights: true,
   },
-  purge: [
-    './src/components/**/*.jsx', 
+  content: [
+    './src/components/**/*.jsx',
     './pages/**/*.jsx'
   ],
   theme: {

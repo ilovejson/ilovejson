@@ -12,6 +12,6 @@ module.exports = {
   generateEtags: false,
   distDir: 'dist',
   // useFileSystemPublicRoutes: false,
-  dontAutoRegisterSw: !isProd,
+  // dontAutoRegisterSw: !isProd,
   swcMinify: true,
 }
