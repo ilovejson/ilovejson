@@ -4,8 +4,7 @@ module.exports = {
     script: "yarn",
     args: "start",
     watch: false,
-    interpreter: '/root/.fnm/fnm',
-    interpreter_args: 'exec --using=16.15.0 node',
+    interpreter: '/usr/bin/bash',
     env: {
       "NODE_ENV": "production",
     },
