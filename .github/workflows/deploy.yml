@@ -1,0 +1,33 @@
+name: Deploy to Dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Passcode'
+        required: true
+  # push:
+    # branches:
+      # - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploying to Dev
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_IP }}
+          username: ${{ secrets.DEV_USER }}
+          password: ${{ secrets.DEV_PASS }}
+          script: |
+            cd /var/www/ilovejson.com/
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/git_rsa
+            git checkout .
+            git pull
+            yarn install
+            yarn build
+            pm2 reload ilovejson --update-env
+          debug: true
