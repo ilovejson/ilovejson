@@ -10,9 +10,9 @@ We welcome various forms of contributions, including but not limited to:
 - **Feature Suggestions:** Proposing new features that could benefit the project.
 
 ## Contribution Process
-1. **Fork and Clone:** Start by forking the [I ❤️ JSON repository](REPOSITORY_LINK) and cloning it to your local machine.
+1. **Fork and Clone:** Start by forking the [I ❤️ JSON repository](https://github.com/ilovejson/ilovejson) and cloning it to your local machine.
 2. **Create a New Branch:** Work on a new branch specific to the contribution you're making.
-3. **Adhere to Coding Standards:** Follow the coding standards and best practices of the project. [Link to Coding Standards](LINK_TO_CODING_STANDARDS)
+3. **Adhere to Coding Standards:** Follow the coding standards and best practices of the project.
 4. **Test Your Changes:** Ensure that your changes do not negatively affect existing functionality.
 5. **Document Your Work:** Update the README or other documentation to reflect your changes or additions.
 6. **Commit Your Changes:** Use clear, descriptive commit messages that explain your changes.
@@ -30,6 +30,6 @@ We welcome various forms of contributions, including but not limited to:
 - **Integration:** Once approved, your contributions will be merged into the main branch.
 
 ## Questions or Discussions
-- **Join the Conversation:** If you have any questions or want to discuss your ideas, please reach out to us [Contact Information](CONTACT_INFORMATION_LINK).
+- **Join the Conversation:** If you have any questions or want to discuss your ideas, Use Github Discussions.
 
 Your contributions help make I ❤️ JSON a better project. We look forward to your ideas and work!
