@@ -37,9 +37,9 @@ export const tools = [
   },
   {
     from: 'JSON',
-    to: 'SQL',
-    description: 'Make JSON files easy to read by converting them to SQL.',
-    slug: 'json-to-sql'
+    to: 'PHP',
+    description: 'Make JSON files easy to read by converting them to PHP Arrays.',
+    slug: 'json-to-php'
   },
   {
     from: 'JSON',
