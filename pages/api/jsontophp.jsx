@@ -57,19 +57,11 @@ export default async (req, res) => {
     return ReE(res, 'I ❤️ JSON. But you forgot to bring something to me.');
   }
 
-  console.log(data.files);
-  console.log('jsonRead');
-  console.log(data.files?.fileInfo?.filepath);
   const jsonRead = fs.readFileSync(data.files?.fileInfo?.filepath, 'utf8');
-  console.log('jsonRead');
-  console.log(jsonRead);
   try {
-
     if (JSON.parse(jsonRead) && !!jsonRead) {
       const jsonData = JSON.parse(jsonRead);
-      console.log(jsonData);
       const phpArray = jsObjectToPhpArray(jsonData);
-      console.log(phpArray);
       const phpCode = `<?php\n\n$data = ${phpArray};\n`;
       const modifiedDate = new Date().getTime();
       const filePath = `${downloadDir}/${modifiedDate}.php`;
