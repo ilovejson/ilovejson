@@ -124,11 +124,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kevincobain2000/json-to-html-table@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@kevincobain2000/json-to-html-table/-/json-to-html-table-1.0.4.tgz#35bdd797023f0978ae30958e4c734f66064b0ad8"
-  integrity sha512-lq7x00KXHzotv0P0eCfXlEUKGu/1fS1moO0XAaL8ipI9A9exuhgCazESXJLHCb00r/MYXQ7De4SsNuJeU/+ibw==
-
 "@next/env@12.3.4":
   version "12.3.4"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.4.tgz#c787837d36fcad75d72ff8df6b57482027d64a47"

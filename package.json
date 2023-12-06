@@ -5,7 +5,6 @@
     "main": "index.js",
     "private": true,
     "dependencies": {
-        "@kevincobain2000/json-to-html-table": "^1.0.4",
         "@prantlf/jsonlint": "^14.0.0",
         "formidable": "^2.0.1",
         "generate-schema": "^2.6.0",
